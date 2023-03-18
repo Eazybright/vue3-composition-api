@@ -1,28 +1,23 @@
-<script>
+<script setup>
 import YummyMeal from './components/YummyMeal.vue'
 import { ref, reactive, watch, provide } from 'vue'
 
-export default{
-    components: { YummyMeal },
-    setup(){
-        provide('currencySymbol', '#')
+provide('currencySymbol', '#')
 
-        const cart = reactive([])
-        const name = ref("The Burger King")
-        const meals = reactive([
-            { name: 'Chinese Burger', price: 5 },
-            { name: 'Fries', price: 15 },
-            { name: 'Efo Riro', price: 50 },
-            { name: 'Stir Fry Spaghetti', price: 105 },
-            { name: 'Fried Rice', price: 51 }
-        ])
+const cart = reactive([])
+const name = ref("The Burger King")
+const meals = reactive([
+    { name: 'Chinese Burger', price: 5 },
+    { name: 'Fries', price: 15 },
+    { name: 'Efo Riro', price: 50 },
+    { name: 'Stir Fry Spaghetti', price: 105 },
+    { name: 'Fried Rice', price: 51 }
+])
 
-        const placeOrder = () => alert('Your order has been received')
-        const addItemToCart = (item) => cart.push(item)
-        const removeWatcher = watch(() => [...cart], (newValue, oldValue) => alert(newValue.join('\n')))
-        return { name, placeOrder, addItemToCart, meals, removeWatcher }
-    }
-}
+const placeOrder = () => alert('Your order has been received')
+const addItemToCart = (item) => cart.push(item)
+const removeWatcher = watch(() => [...cart], (newValue, oldValue) => alert(newValue.join('\n')))
+
 </script>
 
 <template>
